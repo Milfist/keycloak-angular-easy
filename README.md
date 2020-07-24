@@ -12,7 +12,7 @@ Solo necesitas seguir los siguientes pasos:
 #### Configuración
 - Entrar en la consola de KeyCloak http://localhost:8080/auth  
 
-![Consola de administración](/images/image1.png)
+![Consola de administración](/images/image1.jpg)
 
 
 - El usuario es admin/password
