@@ -14,17 +14,10 @@ Solo necesitas seguir los siguientes pasos:
 
 ![Consola de administración](/images/image1.jpg)
 
-
-- El usuario es admin/password
+- El usuario es admin/password. Es el usuario administrador del realm "master". No debemos usar este realm para nuestras pruebas.
 - Hay que crear un realm llamado "angular" (sin comillas)
-- Dentro de ese realm, crear un client llamado 
-
-
-
+- Dentro de ese realm, crear un client llamado "angular"
+- Crear un usuario que utilizaremos cuando nos redirija a la pantalla de login.
 - Levantar la app Angular
 
 
-
-
-
-[img1]: /images/image1.jpg "Consola de administración"
