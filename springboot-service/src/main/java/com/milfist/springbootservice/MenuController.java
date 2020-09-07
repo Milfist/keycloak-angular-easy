@@ -18,9 +18,9 @@ public class MenuController {
     return "menu";
   }
 
-  @RequestMapping(path = "/movida", method = RequestMethod.GET, produces = {"application/json"})
-  public String movida() {
-    return "movida";
+  @RequestMapping(path = "/other", method = RequestMethod.GET, produces = {"application/json"})
+  public String other() {
+    return "other menu";
   }
 }
 

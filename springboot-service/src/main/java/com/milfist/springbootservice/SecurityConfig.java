@@ -45,12 +45,10 @@ class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
     super.configure(http);
     http.authorizeRequests()
-        .anyRequest().authenticated()
-//        .antMatchers("/movida*")
-//        .hasAnyRole()
-        //.hasRole("user")
-//        .anyRequest()
-//        .permitAll()
+        .antMatchers("/menu*")
+        .authenticated()
+        .anyRequest()
+        .permitAll()
     ;
   }
 }
