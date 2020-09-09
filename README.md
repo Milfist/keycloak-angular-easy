@@ -15,10 +15,15 @@ Solo necesitas seguir los siguientes pasos:
 **Pasos a seguir**
 - Clonar el repositorio.
 - Levantar el docker-compose
+
 ``docker compose up -d``
+
 - Levantar la app Angular. Dentro de la carpeta **angular-keycloak-demo**
+
 ``npm run start``
+
 - Levantar el servicio SpringBoot. Dentro de la carpeta **springboot-service**
+
 ``
 mvn clean package
 
