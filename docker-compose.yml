@@ -1,37 +1,58 @@
 version: '3.8'
 
 services:
+
   postgres:
-      image: postgres:latest
-      volumes:
+    image: postgres:latest
+    volumes:
       - ./volumes/postgresql:/var/lib/postgresql/data
-      container_name: postgres
-      networks:
+    container_name: postgres
+    networks:
       - keycloak
-      environment:
-        POSTGRES_DB: keycloak
-        POSTGRES_USER: keycloak
-        POSTGRES_PASSWORD: password
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: password
 
   keycloak:
-      image: jboss/keycloak:10.0.2
-      volumes:
-       - ./volumes/keycloak:/tmp
-      container_name: keycloak
-      networks:
+    image: jboss/keycloak:10.0.2
+    volumes:
+      - ./volumes/keycloak:/tmp
+    container_name: keycloak
+    networks:
       - keycloak
-      environment:
-        DB_VENDOR: POSTGRES
-        DB_ADDR: postgres
-        DB_DATABASE: keycloak
-        DB_USER: keycloak
-        DB_PASSWORD: password
-        KEYCLOAK_USER: admin
-        KEYCLOAK_PASSWORD: password
-        PROXY_ADDRESS_FORWARDING: "true"
-      ports:
-        - 8080:8080
-      depends_on:
-        - postgres
+    environment:
+      DB_VENDOR: POSTGRES
+      DB_ADDR: postgres
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_PASSWORD: password
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: password
+      PROXY_ADDRESS_FORWARDING: "true"
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+
+  openldap:
+    image: osixia/openldap:latest
+    volumes:
+      - ldap:/var/lib/ldap
+    container_name: openldap
+    environment:
+      LDAP_ORGANISATION: "Milfist"
+      LDAP_DOMAIN: "milfist.com"
+      LDAP_BASE_DN: ""
+      LDAP_ADMIN_PASSWORD: "admin"
+      LDAP_READONLY_USER: "true"
+      LDAP_READONLY_USER_USERNAME: "readonly"
+      LDAP_READONLY_USER_PASSWORD: "readonly"
+    ports:
+      - 389:389
+
+volumes:
+  ldap:
+    driver: local
 networks:
   keycloak:
