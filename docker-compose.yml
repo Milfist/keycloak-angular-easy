@@ -18,6 +18,8 @@ services:
     image: jboss/keycloak:10.0.2
     volumes:
       - ./volumes/keycloak:/tmp
+      - ./volumes/keycloak/base_extract:/opt/jboss/keycloak/themes/base_extract
+      - ./volumes/keycloak/keycloak_extract:/opt/jboss/keycloak/themes/keycloak_extract
     container_name: keycloak
     networks:
       - keycloak
